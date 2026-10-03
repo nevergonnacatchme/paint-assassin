@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0);
+    }
+    70% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-scaleIn {
+    animation: scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;       /* no double-tap zoom on phones */
+  overscroll-behavior: none;        /* no pull-to-refresh mid-game */
+  -webkit-tap-highlight-color: transparent;
+}
+input, textarea { user-select: text; -webkit-user-select: text; }
+
+/* hit-marker flash (re-triggered by changing the React key) */
+.hit-marker { width: 0; height: 0; animation: hitmarker 0.28s ease-out forwards; }
+.hit-marker i { position: absolute; left: 0; top: 0; width: 8px; height: 2px; background: currentColor; box-shadow: 0 0 2px #000; transform-origin: 0 50%; }
+@keyframes hitmarker { 0% { opacity: 1; scale: 0.7; } 100% { opacity: 0; scale: 1.5; } }

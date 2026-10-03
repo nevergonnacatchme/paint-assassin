@@ -1,0 +1,9 @@
+# One-click deploy on Render (render.com -> New -> Blueprint -> pick this repo)
+services:
+  - type: web
+    name: paint-assassin-3d
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /
